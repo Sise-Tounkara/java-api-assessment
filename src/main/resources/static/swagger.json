@@ -194,16 +194,16 @@
                 "type": "integer"
                 },
                 "activityCostPerAdult": {
-                "type": "BigDecimal"
+                "type": "number"
                 },
                 "activityCostPerChild": {
-                "type": "BigDecimal"
+                "type": "number"
                 },
                 "foodCostPerAdult": {
-                "type": "BigDecimal"
+                "type": "number"
                 },
                 "foodCostPerChild": {
-                "type": "BigDecimal"
+                "type": "number"
                 },
                 "activityType": {
                 "type": "string",
