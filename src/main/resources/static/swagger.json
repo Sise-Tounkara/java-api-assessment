@@ -1,0 +1,198 @@
+    {
+        "openapi": "3.0.0",
+        "info": {
+        "title": "Family Activities API",
+        "version": "1.0.0",
+        "description": "API documentation for managing family activities. This API facilitates the management of family activities by allowing the user to submit activity details and later retrieve the activity details including a suggested budget which will be calculated using the provided details.",
+        "contact": {
+            "name": "Sise Tounkara",
+            "email": "ceesaytunkara90@gmail.com"
+        }
+        },
+        "servers": [
+        {
+            "url": "http://localhost:8080/api/FamilyActivities",
+            "description": "Local development server"
+        }
+        ],
+        "paths": {
+        "/": {
+            "get": {
+            "summary": "Get all family activities",
+            "description": "Retrieve a list of all family activities.",
+            "parameters": [
+                {
+                "name": "type",
+                "in": "query",
+                "description": "Filter activities by type",
+                "schema": {
+                    "type": "string"
+                }
+                },
+                {
+                "name": "order",
+                "in": "query",
+                "description": "Specify sorting order",
+                "schema": {
+                    "type": "string",
+                    "enum": ["ASC", "DESC"]
+                }
+                }
+            ],
+            "responses": {
+                "200": {
+                "description": "List of family activities retrieved successfully",
+                "content": {
+                    "application/json": {
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                        "$ref": "#/components/schemas/FamilyActivity"
+                        }
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "post": {
+            "summary": "Create a new family activity",
+            "description": "Add a new family activity.",
+            "requestBody": {
+                "required": true,
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "$ref": "#/components/schemas/FamilyActivity"
+                    }
+                }
+                }
+            },
+            "responses": {
+                "200": {
+                "description": "Family activity created successfully",
+                "content": {
+                    "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/FamilyActivity"
+                    }
+                    }
+                }
+                }
+            }
+            }
+        },
+        "/{id}": {
+            "get": {
+            "summary": "Get family activity by ID",
+            "description": "Retrieve a family activity by its ID.",
+            "parameters": [
+                {
+                "name": "id",
+                "in": "path",
+                "description": "ID of the family activity to retrieve",
+                "required": true,
+                "schema": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+                }
+            ],
+            "responses": {
+                "200": {
+                "description": "Family activity retrieved successfully",
+                "content": {
+                    "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/FamilyActivity"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "put": {
+            "summary": "Update family activity",
+            "description": "Update an existing family activity.",
+            "parameters": [
+                {
+                "name": "id",
+                "in": "path",
+                "description": "ID of the family activity to update",
+                "required": true,
+                "schema": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+                }
+            ],
+            "requestBody": {
+                "required": true,
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "$ref": "#/components/schemas/FamilyActivity"
+                    }
+                }
+                }
+            },
+            "responses": {
+                "200": {
+                "description": "Family activity updated successfully",
+                "content": {
+                    "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/FamilyActivity"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "delete": {
+            "summary": "Delete family activity",
+            "description": "Delete an existing family activity by its ID.",
+            "parameters": [
+                {
+                "name": "id",
+                "in": "path",
+                "description": "ID of the family activity to delete",
+                "required": true,
+                "schema": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+                }
+            ],
+            "responses": {
+                "200": {
+                "description": "Family activity deleted successfully"
+                }
+            }
+            }
+        }
+        },
+        "components": {
+        "schemas": {
+            "FamilyActivity": {
+            "type": "object",
+            "properties": {
+                "id": {
+                "type": "string",
+                "format": "uuid"
+                },
+                "name": {
+                "type": "string"
+                },
+                "description": {
+                "type": "string"
+                },
+                "date": {
+                "type": "string",
+                "format": "date-time"
+                }
+            }
+            }
+        }
+        }
+    }
