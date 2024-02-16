@@ -181,18 +181,37 @@
                 "type": "string",
                 "format": "uuid"
                 },
-                "name": {
+                "activityName": {
                 "type": "string"
                 },
-                "description": {
+                "activityDescription": {
                 "type": "string"
                 },
-                "date": {
+                "numberOfAdults": {
+                "type": "integer"
+                },
+                "numberOfChildren": {
+                "type": "integer"
+                },
+                "activityCostPerAdult": {
+                "type": "BigDecimal"
+                },
+                "activityCostPerChild": {
+                "type": "BigDecimal"
+                },
+                "foodCostPerAdult": {
+                "type": "BigDecimal"
+                },
+                "foodCostPerChild": {
+                "type": "BigDecimal"
+                },
+                "activityType": {
                 "type": "string",
-                "format": "date-time"
+                "enum": ["INDOOR", "OUTDOOR"]
                 }
             }
             }
         }
         }
     }
+    
