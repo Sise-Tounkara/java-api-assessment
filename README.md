@@ -49,6 +49,9 @@ mvnw spring-boot:run
 
 You can test your endpoints using [Postman](https://www.postman.com/) or your preferred REST client.
 
+#### Default local server 
+http://localhost:8080/
+
 ## API Endpoints Reference
 
 ### Get all activities
